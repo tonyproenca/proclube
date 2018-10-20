@@ -54,7 +54,6 @@ public abstract class Person implements Serializable{
 	private StatusEnum status;
 	
 	@OneToOne(mappedBy="person", cascade=CascadeType.ALL)
-	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 	
 	@ElementCollection

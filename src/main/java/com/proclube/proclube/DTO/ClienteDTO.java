@@ -15,17 +15,17 @@ public class ClienteDTO implements Serializable{
 	private Long id;
 	
 	@NotEmpty(message="Preenchimento obrigatorio")
-	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
+	@Length(min=2, max=60, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String firstName;
 	
 	@NotEmpty(message="Preenchimento obrigatorio")
-	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
+	@Length(min=2, max=60, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String lastName;
 	
 	@Email(message="Email inválido")
 	private String mail;
 	
-	private String tipo;
+	private Integer tipo;
 	
 	public ClienteDTO() {}
 
@@ -41,7 +41,7 @@ public class ClienteDTO implements Serializable{
 		this.firstName = cliente.getFirstName();
 		this.lastName = cliente.getLastName();
 		this.mail = cliente.getMail();
-		this.tipo = cliente.getTipoAssociadoEnum().getDescricao();
+		this.tipo = cliente.getTipoAssociadoEnum().getCodigo();
 	}
 
 	public Long getId() {
@@ -76,11 +76,11 @@ public class ClienteDTO implements Serializable{
 		this.mail = mail;
 	}
 
-	public String getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 	

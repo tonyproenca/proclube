@@ -45,14 +45,20 @@ public class ProclubeApplication implements CommandLineRunner{
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(cid1, cid2));
 		
-		Cliente cli1 = new Cliente(null, "Antonio", "Proença", "770.719.320-26", "45.194.306", "antproenca@gmail.com", 
+		Cliente cli1 = new Cliente(null, "John", "Snow", "111.542.210-32", "45.194.306", "johnsnow@gmail.com", 
 				TipoAssociadoEnum.RESPONSAVEL, "Brau", "0000", "00000-00");
-		Endereco end1 = new Endereco(null, "Rua Rio Pardo", "000", "---", "Barra de Jangada", "00000-000", cli1, cid1);
+		Endereco end1 = new Endereco(null, "Rua Rio Pardo", "230", "---", "Barra de Jangada", "00000-000", cli1, cid1);
 		cli1.setEndereco(end1);
 		cli1.getTelefones().addAll(Arrays.asList("818888888", "1188888880"));
 		
-		clienteRepository.save(cli1);	
-		enderecoRepository.save(end1);
+		Cliente cli2 = new Cliente(null, "Antonio", "Proença", "770.719.320-26", "45.194.307", "antproenca@gmail.com", 
+				TipoAssociadoEnum.RESPONSAVEL, "Brau", "0000", "00000-00");
+		Endereco end2 = new Endereco(null, "Rua Rio Pardo", "000", "---", "Barra de Jangada", "00000-000", cli2, cid2);
+		cli2.setEndereco(end2);
+		cli2.getTelefones().addAll(Arrays.asList("818888888", "1188888880"));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));	
+		enderecoRepository.saveAll(Arrays.asList(end1, end2));
 	
 	}
 	
