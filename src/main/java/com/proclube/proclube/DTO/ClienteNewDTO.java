@@ -62,6 +62,8 @@ public class ClienteNewDTO implements Serializable{
 	@NotEmpty(message="Preenchimento obrigatorio")
 	private String conta;
 	
+	private Long responsavelId;
+	
 	public ClienteNewDTO() {}
 
 	public String getFirstName() {
@@ -208,6 +210,11 @@ public class ClienteNewDTO implements Serializable{
 		this.conta = conta;
 	}
 	
-	
+	public Long getResponsavelId() {
+		return responsavelId;
+	}
+	public void setResponsavelId(Long responsavelId) {
+		this.responsavelId = responsavelId;
+	}
 
 }

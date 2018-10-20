@@ -11,11 +11,13 @@ import com.proclube.proclube.domain.Cidade;
 import com.proclube.proclube.domain.Cliente;
 import com.proclube.proclube.domain.Endereco;
 import com.proclube.proclube.domain.Estado;
+import com.proclube.proclube.domain.Funcionario;
 import com.proclube.proclube.domain.enums.TipoAssociadoEnum;
 import com.proclube.proclube.repositories.CidadeRepository;
 import com.proclube.proclube.repositories.ClienteRepository;
 import com.proclube.proclube.repositories.EnderecoRepository;
 import com.proclube.proclube.repositories.EstadoRepository;
+import com.proclube.proclube.repositories.FuncionarioRepository;
 
 @SpringBootApplication
 public class ProclubeApplication implements CommandLineRunner{
@@ -28,6 +30,8 @@ public class ProclubeApplication implements CommandLineRunner{
 	CidadeRepository cidadeRepository;
 	@Autowired
 	EnderecoRepository enderecoRepository;
+	@Autowired
+	FuncionarioRepository funcionarioRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProclubeApplication.class, args);
@@ -59,7 +63,10 @@ public class ProclubeApplication implements CommandLineRunner{
 		
 		clienteRepository.saveAll(Arrays.asList(cli1, cli2));	
 		enderecoRepository.saveAll(Arrays.asList(end1, end2));
-	
+		
+		Funcionario func1 = new Funcionario(null, "Fernando", "Mourão", "261.237.110-91", "000000", "fernando.mourao@gmail.com", "femourao", "12345");
+		
+		funcionarioRepository.save(func1);
 	}
 	
 	

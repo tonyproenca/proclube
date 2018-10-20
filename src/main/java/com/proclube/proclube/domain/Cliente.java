@@ -26,6 +26,8 @@ public class Cliente extends Person{
 	@Column(nullable=false)
 	private String conta;
 	
+	private Long responsavelId;
+	
 	public Cliente() {}
 
 	public Cliente(Long id, String firstName, String lastName, @CPF String cpf, String rg, @Email String mail,
@@ -35,6 +37,7 @@ public class Cliente extends Person{
 		this.banco = banco;
 		this.agencia = agencia;
 		this.conta = conta;
+		this.responsavelId = null;
 	}
 
 	public TipoAssociadoEnum getTipoAssociadoEnum() {
@@ -74,6 +77,14 @@ public class Cliente extends Person{
 		return "Cliente [banco=" + banco + ", agencia=" + agencia + ", conta=" + conta + ", getId()=" + getId()
 				+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getCpf()=" + getCpf()
 				+ ", getRg()=" + getRg() + ", getMail()=" + getMail() + ", getEndereco()=" + getEndereco() + "]";
+	}
+	
+	public Long getResponsavel() {
+		return responsavelId;
+	}
+	
+	public void setResponsavel(Long responsavel) {
+		this.responsavelId = responsavel;
 	}
 	
 }

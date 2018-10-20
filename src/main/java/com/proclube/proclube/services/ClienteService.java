@@ -16,10 +16,8 @@ import com.proclube.proclube.domain.Cidade;
 import com.proclube.proclube.domain.Cliente;
 import com.proclube.proclube.domain.Endereco;
 import com.proclube.proclube.domain.enums.TipoAssociadoEnum;
-import com.proclube.proclube.repositories.CidadeRepository;
 import com.proclube.proclube.repositories.ClienteRepository;
 import com.proclube.proclube.repositories.EnderecoRepository;
-import com.proclube.proclube.repositories.EstadoRepository;
 import com.proclube.proclube.services.exceptions.ObjectNotFoundException;
 
 
@@ -81,6 +79,11 @@ public class ClienteService {
 		if (clienteDTO.getTelefone3() != null) {
 			cliente.getTelefones().add(clienteDTO.getTelefone3());
 		} 
+		
+		if (clienteDTO.getResponsavelId() == null && cliente.getTipoAssociadoEnum().equals(TipoAssociadoEnum.DEPENDENTE)) {
+			cliente.setResponsavel(clienteDTO.getResponsavelId());
+		}
+		
 		return cliente;
 	}
 	
