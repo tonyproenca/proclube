@@ -16,6 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.proclube.proclube.security.JWTAuthenticationFilter;
+import com.proclube.proclube.security.JWTAuthorizationFilter;
 import com.proclube.proclube.security.JWTUtil;
 
 @Configuration
@@ -52,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(PUBLIC_MATCHERS).permitAll()
 		.anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 		//Assegurando que não iremos criar registros para sessão de usuários, mantendo a app stateless
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
