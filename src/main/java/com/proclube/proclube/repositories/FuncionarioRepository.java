@@ -13,4 +13,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	@Transactional(readOnly=true)
 	Cliente findByMail (String email);
 
+	@Transactional(readOnly=true)
+	Funcionario findByLogin (String login);
 }

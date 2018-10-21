@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.proclube.proclube.DTO.ClienteNewDTO;
 import com.proclube.proclube.domain.Cliente;
-import com.proclube.proclube.domain.enums.TipoAssociadoEnum;
 import com.proclube.proclube.repositories.ClienteRepository;
 import com.proclube.proclube.resources.exceptions.FieldMessages;
 

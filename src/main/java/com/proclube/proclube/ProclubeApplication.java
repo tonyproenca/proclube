@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.proclube.proclube.domain.Cidade;
 import com.proclube.proclube.domain.Cliente;
@@ -32,6 +33,8 @@ public class ProclubeApplication implements CommandLineRunner{
 	EnderecoRepository enderecoRepository;
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
+	@Autowired
+	BCryptPasswordEncoder encoder;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProclubeApplication.class, args);
@@ -64,9 +67,10 @@ public class ProclubeApplication implements CommandLineRunner{
 		clienteRepository.saveAll(Arrays.asList(cli1, cli2));	
 		enderecoRepository.saveAll(Arrays.asList(end1, end2));
 		
-		Funcionario func1 = new Funcionario(null, "Fernando", "Mourão", "261.237.110-91", "000000", "fernando.mourao@gmail.com", "femourao", "12345");
-		
-		funcionarioRepository.save(func1);
+		Funcionario func1 = new Funcionario(null, "Tywin", "Lannister", "261.237.110-91", "000000", "tywin.lannister@gmail.com", "tyty", encoder.encode("alionstillhasclaws"));
+		Funcionario func2 = new Funcionario(null, "Daenerys", "Targaryen", "770.719.320-26", "0002000", "daenerys.motherofdragons@gmail.com", "dany", encoder.encode("mybabies"));
+
+		funcionarioRepository.saveAll(Arrays.asList(func1, func2));
 	}
 	
 	

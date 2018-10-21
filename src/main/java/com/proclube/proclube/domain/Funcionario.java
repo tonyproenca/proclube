@@ -6,6 +6,8 @@ import javax.validation.constraints.Email;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Funcionario extends Person{
 	private static final long serialVersionUID = 1L;
@@ -14,6 +16,7 @@ public class Funcionario extends Person{
 	private String login;
 	
 	@Column(nullable=false)
+	@JsonIgnore
 	private String senha;
 	
 	public Funcionario (){}
